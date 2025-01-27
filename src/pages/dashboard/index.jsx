@@ -16,10 +16,12 @@ const Index = function () {
           <span className={"tab ${activeTab ==='Profile' ? 'active-tab' : '' } "} onClick={() => setActiveTab("Profile")}> Create Profiles </span>
 
           <span className={"tab ${activeTab === 'Admin' ? 'active-tab' : ''} "} onClick={() => setActiveTab("Admin")}> Create Admin</span>
+          <LogoutButton/>
         </div>
         {activeTab === "Profile" ? <Profile /> : <Admin />}
+        
       </div>
-      <LogoutButton/>
+      
     </main>
   );
 };

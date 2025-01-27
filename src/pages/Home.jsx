@@ -37,9 +37,9 @@ const Home = function () {
       {profiles.map((profile) => ( 
         <div key={profile._id} className="home-grid">
           <div className="home-card">
-            <p>{profile.name}</p>
-            <p>{profile.email}</p>
-            <p>{profile.job}</p>
+            <p className="home-content">{profile.name}</p>
+            <p className="home-content">{profile.email}</p>
+            <p className="home-content">{profile.job}</p>
           </div>
         </div>
       ))}

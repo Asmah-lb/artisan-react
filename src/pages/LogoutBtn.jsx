@@ -10,7 +10,7 @@ const LogoutButton = () => {
     //   window.location.href = "/"; // Replace "/login" with your desired route
     };
   
-    return <button onClick={handleLogout}>Logout</button>;
+    return <button className="login-btn" onClick={handleLogout}>Logout</button>;
   };
   
   export default LogoutButton;
