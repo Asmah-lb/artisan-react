@@ -7,7 +7,7 @@ const Home = function () {
   async function handleFetchProfiles() {
     try {
       setIsLoading(true);
-      const res = await fetch("http://localhost:3000/api/profiles/");
+      const res = await fetch("https://artisan-api.up.railway.app/api/profiles/");
       const data = await res.json();
 
       setProfiles(data.data.profiles);
@@ -35,7 +35,7 @@ const Home = function () {
 
       <h2>HELLO</h2>
       {profiles.map((profile) => ( 
-        <div className="home-grid">
+        <div key={profile._id} className="home-grid">
           <div className="home-card">
             <p>{profile.name}</p>
             <p>{profile.email}</p>

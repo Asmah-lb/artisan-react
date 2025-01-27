@@ -19,7 +19,7 @@ export const AuthProvider = ({children}) => {
 
 
     async function logoutAdmin() {
-        await fetch("http://localhost:3000/api/admin/logout", {
+        await fetch("https://artisan-api.up.railway.app/api/admin/logout", {
             method:"POST",
         });
         

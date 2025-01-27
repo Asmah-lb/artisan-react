@@ -21,7 +21,7 @@ const Profile = function () {
         return;
       }
   
-      const res = await fetch("http://localhost:3000/api/profiles/", {
+      const res = await fetch("https://artisan-api.up.railway.app/api/profiles/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

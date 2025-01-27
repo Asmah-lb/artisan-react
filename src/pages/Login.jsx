@@ -18,7 +18,7 @@ const Login = function () {
     setIsLoading(true);
 
     try {
-      const res = await fetch("http://localhost:3000/api/admin/login", {
+      const res = await fetch("https://artisan-api.up.railway.app/api/admin/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -22,7 +22,7 @@ const Admin = function () {
         return;
       }
   
-      const res = await fetch("http://localhost:3000/api/admin/", {
+      const res = await fetch("https://artisan-api.up.railway.app/api/admin/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
