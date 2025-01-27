@@ -11,20 +11,134 @@
     font-family: Inter;
     font-weight: 400;
     line-height: 1;
-    /* width: 1, 280px;
-    height: 2, 017px;
-    padding: 0px 230px 0px 230px; */
+    /* padding: 0px 230px 0px 230px;  */
   }
+
+.container{
+  max-width:950px ;
+  margin: 0 auto;
+}
+
+
+
+
+
   /* Home Style */
 .home-grid{
- /* display: grid; */
- /* grid-template-columns: 1fr 1fr; */
  border: 1px solid black;
  gap: 40px;
  margin-bottom: 30px;
 }
 
 
+
+
+
+
+
+
+
+/* login======== */
+
+.login-container {
+  padding: 40px 100px 40px 100px;
+  background-color: #e5e5e5;
+  border: 1px solid rgb(241, 236, 236);
+  display: grid;
+  gap: 30px;
+  margin-top: 60px;
+  margin-bottom: 100px;
+}
+.login-content {
+  display: grid;
+  gap: 40px;
+}
+.login-content h1 {
+  font-size: 48px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.login-box {
+  display: grid;
+  gap: 30px;
+}
+.text-box {
+  padding: 20px;
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.btn {
+  display: grid;
+  gap: 20px;
+}
+.login-btn {
+  padding: 10px 40px;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: #3d3d3d;
+  color: #fff;
+  cursor: pointer;
+}
+.login-nav{
+  padding: 10px 40px;
+  font-size: 20px;
+  font-weight: 500;
+  background-color: #171717;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+}
+
+
+
+
+/* =======Creating Admin========= */
+
+
+.register-container {
+  padding: 40px 100px 40px 100px;
+  background-color: #e5e5e5;
+  border: 1px solid rgb(241, 236, 236);
+  display: grid;
+  gap: 30px;
+  margin-top: 60px;
+  margin-bottom: 100px;
+}
+.register-content {
+  display: grid;
+  gap: 40px;
+}
+.register-content h1 {
+  font-size: 48px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.register-box {
+  display: grid;
+  gap: 30px;
+}
+.text-box {
+  padding: 20px;
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.btn {
+  display: grid;
+  gap: 20px;
+}
+.register-btn {
+  padding: 10px 40px;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: #3d3d3d;
+  color: #fff;
+}
 
 
 
@@ -49,4 +163,18 @@
   .tabs .tab.active-tab{
     color: #fff;
     background-color: #111;
+  }
+
+
+
+  /* =====Media Query===== */
+  @media screen and (max-width:800px) {
+    .register-container{
+      width: 100%;
+    }
+  }
+  @media screen and (max-width:300px) {
+    .register-container{
+      width: 100%;
+    }
   }

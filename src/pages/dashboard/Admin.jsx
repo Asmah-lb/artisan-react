@@ -96,7 +96,7 @@ const Admin = function () {
           onClick={handleForm}
           disabled={isLoading}
         >
-          {isLoading ? "Loading..." : "Sign Up"}
+          {isLoading ? "Loading..." : "Create Admin"}
         </button>
       </div>
     </div>

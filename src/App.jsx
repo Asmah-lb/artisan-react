@@ -10,7 +10,7 @@ import Dashboard from "./pages/dashboard"
 
 const App = function(){
   return(
-    <main>
+    <main className="container">
       
       
       <BrowserRouter>
