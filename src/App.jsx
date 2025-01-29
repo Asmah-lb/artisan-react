@@ -2,10 +2,9 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Login from"./pages/Login"
-import Home from "./pages/Home";
 import ProtectedRoute from "./pages/ProtectedRoutes";
+import Dashboard from "./pages/dashboard/Dashboard"
 
-import Dashboard from "./pages/dashboard"
 
 
 const App = function(){
@@ -16,12 +15,13 @@ const App = function(){
       <BrowserRouter>
       <Routes>
 
-        <Route path="/" element= {<Home/>}></Route>
+        <Route path="/" element= {<Login/>}></Route>
        <Route path="/login" element= {<Login/>}></Route>
    
 
         <Route element={<ProtectedRoute/>} > 
-              <Route path="/dashboard" element={<Dashboard/>}></Route>
+              <Route path="/dashboard/*" element={<Dashboard/>}></Route>
+
           </Route>
 
 

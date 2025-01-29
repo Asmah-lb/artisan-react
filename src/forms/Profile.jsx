@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useAuthContext } from "../../context/AuthContext";
+import { useAuthContext } from "../context/AuthContext";
 
-const Admin = function () {
+
+const Profile = function () {
   const [name, setName] = useState("");
+  const [job, setJob] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [role, setRole] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const { token } = useAuthContext();
@@ -17,18 +17,18 @@ const Admin = function () {
 
   
       // Validate inputs
-      if (!name || !email || !password || !role) {
+      if (!name || !email || !job ) {
         alert("Please fill out all fields.");
         return;
       }
   
-      const res = await fetch("https://artisan-api.up.railway.app/api/admin/", {
+      const res = await fetch("https://artisan-api.up.railway.app/api/profiles/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ name, email, password, role }),
+        body: JSON.stringify({ name, email, job }),
       });
   
       const data = await res.json();
@@ -38,8 +38,7 @@ const Admin = function () {
       // Clear form inputs after success
       setName("");
       setEmail("");
-      setPassword("");
-      setRole("");
+      setJob("");
 
     } catch (err) {
       console.error("Error:", err.message);
@@ -53,7 +52,7 @@ const Admin = function () {
   return (
     <div className="register-container">
       <div className="register-content">
-        <h1>SignUp</h1>
+        <h1>Create Profile</h1>
         <div className="register-box">
           <input
             type="text"
@@ -72,19 +71,11 @@ const Admin = function () {
             required
           />
           <input
-            type="password"
-            className="text-box"
-            placeholder="Password*"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <input
             type="text"
             className="text-box"
-            placeholder="Role*"
-            value={role}
-            onChange={(e) => setRole(e.target.value)}
+            placeholder="Job*"
+            value={job}
+            onChange={(e) => setJob(e.target.value)}
             required
           />
         </div>
@@ -96,10 +87,10 @@ const Admin = function () {
           onClick={handleForm}
           disabled={isLoading}
         >
-          {isLoading ? "Loading..." : "Create Admin"}
+          {isLoading ? "Loading..." : "Create Profile"}
         </button>
       </div>
     </div>
   );
 };
-export default Admin;
+export default Profile;

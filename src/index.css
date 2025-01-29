@@ -6,48 +6,30 @@
   
   body {
     color: #555;
-    background-color: #fff;
+    background-color: rgb(247, 250, 252);
     font-size: 15px;
     font-family: Inter;
     font-weight: 400;
     line-height: 1;
-    /* padding: 0px 230px 0px 230px;  */
+    max-width: 1200px;
+    max-height: 1200vh;
+    margin: 0 auto;
   }
 
-.container{
-  max-width:950px ;
-  margin: 0 auto;
-}
 
-
-
-
-
-  /* Home Style */
-.home-grid{
- border: 1px solid black;
- gap: 40px;
- margin-bottom: 30px;
-}
-
-
-
-
-
-
-
-
-
-/* login======== */
+/*=====login page======== */
 
 .login-container {
-  padding: 40px 100px 40px 100px;
-  background-color: #e5e5e5;
-  border: 1px solid rgb(241, 236, 236);
+  max-width: 700px;
+  background: linear-gradient(to bottom, rgba(0, 43, 161, 1), transparent);
   display: grid;
-  gap: 30px;
-  margin-top: 60px;
-  margin-bottom: 100px;
+  gap: 35px;
+  padding:60px ;
+  border: 1px solid blue;
+  justify-self: center;
+  color: #111;
+  margin-top: 40px;
+  
 }
 .login-content {
   display: grid;
@@ -63,36 +45,22 @@
   display: grid;
   gap: 30px;
 }
-.text-box {
+.login-text{
   padding: 20px;
-  font-family: Inter;
   font-size: 18px;
   font-weight: 300;
-}
-
-.btn {
-  display: grid;
-  gap: 20px;
 }
 .login-btn {
   padding: 10px 40px;
   font-size: 18px;
   font-weight: 500;
-  background-color: #3d3d3d;
+  background-color: rgba(0, 43, 161, 0.747);
   color: #fff;
   cursor: pointer;
 }
-.login-nav{
-  padding: 10px 40px;
-  font-size: 20px;
-  font-weight: 500;
-  background-color: #171717;
-  color: #fff;
-  text-align: center;
-  text-decoration: none;
+.login-btn:hover{
+  background-color: rgb(58, 100, 216);
 }
-
-
 
 
 /* =======Creating Admin========= */
@@ -165,6 +133,41 @@
     background-color: #111;
   }
 
+  /* =======Dashboard========= */
+  .dashboard{
+    display: flex;
+    /* max-width: 100%;
+    max-height: 100%; */
+
+  }
+  .dashboard-bar{
+    position: fixed;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    
+    height: 100vh;
+    width: 250px;
+  }
+  .dashboard-link{
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
+    display:block;
+    background-color: rgba(0, 43, 161, 0.747);
+    /* border: 5px solid #0854ec; */
+    margin: 8px;
+    /* border-radius: 8px; */
+    box-shadow: 3px 3px 6px #011532;
+  }
+  .dashboard-content{
+    border: 2px solid yellowgreen;
+    margin-left: 270px;
+    padding: 20px;
+    flex-grow: 1;
+  }
 
 
   /* =====Media Query=====

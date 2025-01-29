@@ -56,25 +56,24 @@ const Login = function () {
         <div className="login-box">
           <input
             type="email"
-            className="text-box"
+            className="login-text"
             placeholder="Email*"
             onChange={(e) => setEmail(e.target.value)}
           />
 
           <input
             type="password"
-            className="text-box"
+            className="login-text"
             placeholder="Password*"
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
       </div>
 
-      <div className="btn">
         <button type="submit" onClick={handleLogin} className="login-btn">
           {isLoading ? "Loading..." : "Login"}
         </button>
-      </div>
+      
     </div>
   );
 };
