@@ -54,7 +54,7 @@ const Admin = function () {
   return (
     <div className="register-container">
       <div className="register-content">
-        <h1>SignUp</h1>
+        <h1>Create Admin</h1>
         <div className="register-box">
           <input
             type="text"

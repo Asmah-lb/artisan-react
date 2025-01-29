@@ -33,10 +33,14 @@ const Login = function () {
       alert(data.message);
 
 
+      // Clear form inputs after success
+      
+      setEmail("");
+      setPassword("");
 
     } catch (err) {
       console.log(err.message);
-      alert(err.message)
+      alert("Email or Password incorrect!!")
 
     } finally {
       setIsLoading(false);
