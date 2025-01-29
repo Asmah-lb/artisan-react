@@ -2,7 +2,7 @@ import React from "react";
 
 function UpdateProfile() {
     return(<>
-    <h2>UpdateProfile</h2>
+    <h2>Update Profile</h2>
     </>)
     
 }
