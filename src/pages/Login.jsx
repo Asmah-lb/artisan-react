@@ -46,7 +46,7 @@ const Login = function () {
 
   useEffect(function () {
     if (admin) {
-      navigate("/dashboard");
+      navigate("/dashboard/create-profile");
     }
   }, [admin, navigate]);
 
