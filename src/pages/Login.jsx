@@ -23,13 +23,15 @@ const Login = function () {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ email, password }),
-      });
+      })
+
 
       const data = await res.json();
       console.log(res, data);
 
       handleChange(data.data.admin, data.token);
       alert(data.message);
+      
     } catch (err) {
       console.log(err.message);
       alert("Email or Password incorrect!");

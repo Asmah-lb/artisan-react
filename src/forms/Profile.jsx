@@ -10,7 +10,7 @@ const Profile = function () {
 
   const { token } = useAuthContext();
 
-  async function handleForm(e) {
+  async function handleCreateProfie(e) {
     e.preventDefault(); // Prevent page reload on form submission
     try {
       setIsLoading(true);
@@ -84,7 +84,7 @@ const Profile = function () {
         <button
           type="submit"
           className="register-btn"
-          onClick={handleForm}
+          onClick={handleCreateProfie}
           disabled={isLoading}
         >
           {isLoading ? "Loading..." : "Create Profile"}

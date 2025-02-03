@@ -11,7 +11,7 @@
     font-family: Inter;
     font-weight: 400;
     line-height: 1;
-    max-width: 1200px;
+    max-width: 1250px;
     max-height: 1200vh;
     margin: 0 auto;
   }
@@ -61,6 +61,18 @@
 .login-btn:hover{
   background-color: rgb(58, 100, 216);
 }
+.logout-btn{
+  margin-bottom: 100px;
+  color: #111;
+  position:absolute;
+  bottom: 0;
+  left: 5;
+  font-size: 20px;
+  cursor: pointer;
+}
+.logout-btn:hover{
+  color: rgb(137, 156, 210);
+}
 
 
 /* =======Creating Admin========= */
@@ -109,33 +121,10 @@
 }
 
 
-
-
-
-
-  .tabs{
-    margin: 10px 0 30px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 20px;
-    border: 1px solid black;
-  }
-  .tabs .tab{
-    background-color: #eee;
-    padding: 10px 15px;
-    transition: all .35s;
-    cursor: pointer;
-  
-  }
-  .tabs .tab.active-tab{
-    color: #fff;
-    background-color: #111;
-  }
-
   /* =======Dashboard========= */
   .dashboard{
     display: flex;
+    /* border: 1px solid black; */
     /* max-width: 100%;
     max-height: 100%; */
 
@@ -148,28 +137,60 @@
     gap: 25px;
     background: linear-gradient(to top, rgba(0, 43, 161, 1), transparent);
     height: 100vh;
-    width: 250px;
+    width: 200px;
+    padding: 30px;
+    border-radius: 5px;
+    /* margin-bottom: 40px; */
   }
-  .dashboard-link{
-    text-decoration: none;
+  
+  .dashboard-trigger{
     cursor: pointer;
     font-size: 20px;
-    padding: 10px;
-    display:block;
-    /* background-color: rgba(0, 43, 161, 0.747); */
-    /* border: 5px solid #0854ec; */
-    margin: 8px;
-    /* border-radius: 8px; */
-    box-shadow: 3px 3px 6px #011532;
+    display: flex;
+    gap: 10px;
   }
-  .dashboard-link:hover{
-    background-color: rgb(58, 100, 216);
+  .dashboard-trigger:hover{
+    color: rgb(58, 100, 216);
+  }
+
+  .dashboard-list{
+    display: none;
+    transition: all 0.3s ease-in-out;
+
+    
+  }
+  .dashboard-list.active {
+    display: block;
   }
   .dashboard-content{
     border: 2px solid yellowgreen;
-    margin-left: 270px;
+    margin-left: 250px;
     padding: 20px;
     flex-grow: 1;
+  }
+
+  .dashboard-item{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+
+  }
+  .dashboard-icon{
+    font-size: 18px;
+    color: aqua;
+  }
+
+  
+  .dashboard-link{
+    text-decoration: none;
+    cursor: pointer;
+    display:block;
+    font-size: 18px;
+    
+  }
+
+  .dashboard-link:hover{
+    color: rgb(58, 100, 216);
   }
 
 
@@ -184,3 +205,18 @@
       width: 100%;
     }
   } */
+
+
+
+
+
+
+
+
+
+
+
+
+  
+ 
+  

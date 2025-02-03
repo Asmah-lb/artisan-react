@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, Route, Routes } from "react-router-dom";
 
 import Profile from "../../forms/Profile";
@@ -9,38 +9,45 @@ import DeleteAdmin from "../../forms/DeleteAdmin";
 import DeleteProfile from "../../forms/DeleteProfile";
 import LogoutButton from "../../component/LogoutBtn";
 
+import DropdownList from "./DropdownList";
+import { CgProfile } from "react-icons/cg";
+import { AiFillProfile } from "react-icons/ai";
+import ProfileTable from "../../component/ProfileTable";
+
 function Dashboard() {
+  const [isAdminOpen, setIsAdminOpen] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+
   return (
     <div className="dashboard">
-      {/* side bar */}
+      {/* Sidebar */}
       <div className="dashboard-bar">
-        <h2> Welcome</h2>
+        <h2> Welcome </h2>
 
-        <Link to="/dashboard/create-profile" className="dashboard-link">
-          Create Profile
-        </Link>
+        {/* Admin Section */}
+        <div className="dashboard-trigger" onClick={() => setIsAdminOpen(!isAdminOpen)}>
+          <CgProfile />
+          <p>Admins</p>
+        </div>
+        <div className={`dashboard-list ${isAdminOpen ? "active" : "inactive"}`}>
+          <DropdownList icon={<CgProfile />} text="Create Admin" to="/dashboard/create-admin" />
+          <DropdownList icon={<CgProfile />} text="Update Admin" to="/dashboard/update-admin" />
+          <DropdownList icon={<CgProfile />} text="Delete Admin" to="/dashboard/delete-admin" />
+        </div>
 
-        <Link to="/dashboard/update-profile" className="dashboard-link">
-          Update Profile
-        </Link>
+        {/* Profile Section */}
+        <div className="dashboard-trigger" onClick={() => setIsProfileOpen(!isProfileOpen)}>
+        <AiFillProfile />
+          <p>Profiles</p>
+        </div>
+        <div className={`dashboard-list ${isProfileOpen ? "active" : "inactive"}`}>
+          <DropdownList icon={<CgProfile />} text="Create Profile" to="/dashboard/create-profile" />
+          <DropdownList icon={<CgProfile />} text="Update Profile" to="/dashboard/update-profile" />
+          <DropdownList icon={<CgProfile />} text="Profile Table" to="/dashboard/profile-table" />
+          <DropdownList icon={<CgProfile />} text="Delete Profile" to="/dashboard/delete-profile" />
+        </div>
 
-        <Link to="/dashboard/delete-profile" className="dashboard-link">
-          Delete Profile
-        </Link>
-
-        <Link to="/dashboard/create-admin" className="dashboard-link">
-          Create Admin
-        </Link>
-
-        <Link to="/dashboard/update-admin" className="dashboard-link">
-          Update Admin
-        </Link>
-
-        <Link to="/dashboard/delete-admin" className="dashboard-link">
-          Delete Admin
-        </Link>
-
-        <LogoutButton/>
+        <LogoutButton />
       </div>
 
       {/* Content Grid */}
@@ -48,117 +55,16 @@ function Dashboard() {
         <Routes>
           <Route path="create-profile" element={<Profile />} />
           <Route path="create-admin" element={<Admin />} />
-
           <Route path="update-admin" element={<UpdateAdmin />} />
           <Route path="update-profile" element={<UpdateProfile />} />
-
           <Route path="delete-admin" element={<DeleteAdmin />} />
           <Route path="delete-profile" element={<DeleteProfile />} />
+          <Route path="profile-table" element={<ProfileTable />} />
+
         </Routes>
       </div>
     </div>
   );
 }
+
 export default Dashboard;
-
-
-// <select
-//             name="role"
-//             value={formData.role}
-//             onChange={handleChange}
-//             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
-//             required
-//           >
-//             <option value="">Select Role</option>
-//             <option value="admin">Admin</option>
-//             <option value="user">User</option>
-//           </select>
-
-
-
-
-
-
-
-
-// import React, { useState } from "react"; 
-// import { Link, Route, Routes } from "react-router-dom";
-
-// import Profile from "../../forms/Profile";
-// import Admin from "../../forms/Admin";
-// import UpdateProfile from "../../forms/UpdateProfile";
-// import UpdateAdmin from "../../forms/UpdateAdmin";
-// import DeleteAdmin from "../../forms/DeleteAdmin";
-// import DeleteProfile from "../../forms/DeleteProfile";
-// import LogoutButton from "../../component/LogoutBtn";
-
-// function Dashboard() {
-//   const [isAdminOpen, setIsAdminOpen] = useState(false);
-
-//   const toggleAdminMenu = () => {
-//     setIsAdminOpen(!isAdminOpen);
-//   };
-
-//   return (
-//     <div className="dashboard">
-//       {/* Sidebar */}
-//       <div className="dashboard-bar">
-//         <h2> Welcome</h2>
-
-//         <Link to="/dashboard/create-profile" className="dashboard-link">
-//           Create Profile
-//         </Link>
-
-//         <Link to="/dashboard/update-profile" className="dashboard-link">
-//           Update Profile
-//         </Link>
-
-//         <Link to="/dashboard/delete-profile" className="dashboard-link">
-//           Delete Profile
-//         </Link>
-
-//         {/* Admin dropdown */}
-//         <div>
-//           <button className="dashboard-link" onClick={toggleAdminMenu}>
-//             Admin
-//           </button>
-//           {isAdminOpen && (
-//             <ul>
-//               <li>
-//                 <Link to="/dashboard/create-admin" className="dashboard-link">
-//                   Create Admin
-//                 </Link>
-//               </li>
-//               <li>
-//                 <Link to="/dashboard/update-admin" className="dashboard-link">
-//                   Update Admin
-//                 </Link>
-//               </li>
-//               <li>
-//                 <Link to="/dashboard/delete-admin" className="dashboard-link">
-//                   Delete Admin
-//                 </Link>
-//               </li>
-//             </ul>
-//           )}
-//         </div>
-
-//         <LogoutButton />
-//       </div>
-
-//       {/* Content Grid */}
-//       <div className="dashboard-content">
-//         <Routes>
-//           <Route path="create-profile" element={<Profile />} />
-//           <Route path="create-admin" element={<Admin />} />
-//           <Route path="update-admin" element={<UpdateAdmin />} />
-//           <Route path="update-profile" element={<UpdateProfile />} />
-//           <Route path="delete-admin" element={<DeleteAdmin />} />
-//           <Route path="delete-profile" element={<DeleteProfile />} />
-//         </Routes>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Dashboard;

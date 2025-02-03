@@ -29,6 +29,8 @@ export const AuthProvider = ({children}) => {
             Cookies.remove("token-obj");  
         }, 2000);
 
+        
+
         return true
     }
 
