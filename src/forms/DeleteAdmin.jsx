@@ -1,54 +1,65 @@
 import React, { useState } from "react";
 import { useAuthContext } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
-async function DeleteAdmin() {
-//   const { admin, token } = useAuthContext();
-//   const [loading, setLoading] = useState(false);
-//   const [error, setError] = useState(null);
-//   const [success, setSuccess] = useState(false); // To handle success state
+function DeleteAdmin() {
 
-//   if (!admin || !token) {
-//     alert("You are not authorized or logged in.");
-//     return;
-//   }
+  const navigate = useNavigate(); 
+  const { admin, token } = useAuthContext();
+  const [loading, setLoading] = useState(false);
 
-//   const adminId = admin._id;
+  if (!admin || !token) {
+    alert("You are not authorized or logged in.");
+    return null; 
+  }
 
-//   const handleDelete = async () => {
-//     setLoading(true);
-//     setError(null);
-//     setSuccess(false); // Reset success state
+  const adminId = admin._id;
 
-//     try {
-//       const res = await fetch(
-//         `https://artisan-api.up.railway.app/api/admin/${adminId}`,
-//         {
-//           method: "DELETE",
-//           headers: {
-//             "Content-Type": "application/json",
-//             Authorization: `Bearer ${token}`,
-//           },
-//         }
-//       );
+  const handleDeleteConfirmation = () => {
+    const isConfirmed = window.confirm("Are you sure you want to delete this admin?");
+    
+    if (isConfirmed) {
+      handleDeleteAdmin(adminId);
+    } else {
+      console.log("Admin deletion cancelled");
+    }
+  };
 
-//       if (!res.ok) {
-//         throw new Error(`Failed to delete profile. Status: ${res.status}`);
-//       }
+  const handleDeleteAdmin = async (adminId) => {
+    setLoading(true);
 
-//       setSuccess(true); // If deletion is successful
-//     } catch (err) {
-//       setError(err.message); // Handle any errors
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
+    try {
+      const res = await fetch(
+        `https://artisan-api.up.railway.app/api/admin/${adminId}`, 
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (!res.ok) {
+        throw new Error(`Failed to delete admin. Status: ${res.status}`);
+      }
+
+      alert("Admin Deleted");
+      navigate("/login"); 
+
+    } catch (err) {
+      console.log("Error: Try again!", err.message); 
+      alert("Error deleting admin. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div>
-      {loading && <p>Deleting...</p>}
-      {success && <p style={{ color: "green" }}>Profile deleted successfully!</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      <button onClick={handleDelete}>Delete Admin</button>
+      <button onClick={handleDeleteConfirmation} >
+        {loading ? "Deleting..." : "Delete Admin"}
+      </button>
     </div>
   );
 }

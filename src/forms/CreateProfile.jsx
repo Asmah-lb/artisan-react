@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useAuthContext } from "../context/AuthContext";
 
 
-const Profile = function () {
+const CreateProfile = function () {
   const [name, setName] = useState("");
   const [job, setJob] = useState("");
   const [email, setEmail] = useState("");
@@ -49,48 +49,47 @@ const Profile = function () {
     }
   }
 
+//   import { defineConfig } from 'vite'
+// import tailwindcss from '@tailwindcss/vite'
+// export default defineConfig({
+//   plugins: [
+//     tailwindcss(),
+//   ],
+// })
+
   return (
-    <div className="register-container">
-      <div className="register-content">
-        <h1>Create Profile</h1>
-        <div className="register-box">
-          <input
-            type="text"
-            className="text-box"
-            placeholder="Name*"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-          <input
-            type="email"
-            className="text-box"
-            placeholder="Email*"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <input
-            type="text"
-            className="text-box"
-            placeholder="Job*"
-            value={job}
-            onChange={(e) => setJob(e.target.value)}
-            required
-          />
-        </div>
-      </div>
-      <div className="btn">
-        <button
-          type="submit"
-          className="register-btn"
-          onClick={handleCreateProfie}
-          disabled={isLoading}
-        >
-          {isLoading ? "Loading..." : "Create Profile"}
-        </button>
-      </div>
+    <div className="create-container">
+      <h1 className="create-header">Create Profile</h1>
+      <form className="create-form" onSubmit={handleCreateProfie}>
+        <input
+          type="text"
+          className="create-input"
+          placeholder="Name*"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+        <input
+          type="email"
+          className="create-input"
+          placeholder="Email*"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="text"
+          className="create-input"
+          placeholder="Job*"
+          value={job}
+          onChange={(e) => setJob(e.target.value)}
+          required
+        />
+      <button type="submit" className="create-btn">
+        {isLoading ? "Loading..." : "Create Profile"}
+      </button>
+      </form>
     </div>
   );
 };
-export default Profile;
+export default CreateProfile;

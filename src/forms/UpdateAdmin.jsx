@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { useAuthContext } from '../context/AuthContext'; // Adjust path as necessary
+import { useAuthContext } from '../context/AuthContext'; 
+
 
 function UpdateAdmin() {
 
-  const { admin, token } = useAuthContext();  
+  const { admin, token } = useAuthContext();
+  const [name, setName] = useState('');  
   const [newEmail, setNewEmail] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -40,6 +42,7 @@ function UpdateAdmin() {
 
       const data = await res.json();
       console.log(res, data);
+      alert("Updated Successfully!")
 
       //clearing form
       setNewEmail("");
@@ -50,30 +53,38 @@ function UpdateAdmin() {
         console.log(err.message);
         alert('Try again!!, an error occured!');
 
-    //   setMessage('An error occurred while updating the profile');
 
     }finally{
         setIsLoading(false)
     }
-  };
+ };
 
   return (
-    <div>
-      <h2>Update Admin Profile</h2>
-      <form onSubmit={handleUpdateAdmin}>
-        <input
+    <div className='updateAdmin'>
+      <h2 className='updateAdmin-header' >Update Admin Profile</h2>
+      <form className='updateAdmin-form' onSubmit={handleUpdateAdmin}>
+      <input 
+          className='updateAdmin-input'
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input 
+          className='updateAdmin-input'
           type="email"
           placeholder="New Email"
           value={newEmail}
           onChange={(e) => setNewEmail(e.target.value)}
         />
         <input
+        className='updateAdmin-input'
           type="password"
-          placeholder="Current Password"
+          placeholder="New Password"
           value={newPassword}
           onChange={(e) => setNewPassword(e.target.value)}
         />
-        <button type="submit" >{isLoading ? "Loading..." : "Update Admin"}</button>
+        <button className='updateAdmin-btn' type="submit" >{isLoading ? "Loading..." : "Update Admin"}</button>
       </form>
     </div>
   );

@@ -1,3 +1,5 @@
+
+/* @import "tailwindcss"; */
 * {
     padding: 0;
     margin: 0;
@@ -75,55 +77,98 @@
 }
 
 
-/* =======Creating Admin========= */
+/* =======Creating Admin and Profiles========= */
 
 
-.register-container {
-  padding: 40px 100px 40px 100px;
-  background-color: #e5e5e5;
-  border: 1px solid rgb(241, 236, 236);
-  display: grid;
-  gap: 30px;
-  margin-top: 60px;
-  margin-bottom: 100px;
-}
-.register-content {
+.create-container {
   display: grid;
   gap: 40px;
+  width: 85%;
+  padding:50px ;
+  border: 1px solid blue;
+  justify-self: center;
+  color: #111;
 }
-.register-content h1 {
+.create-header {
   font-size: 48px;
   font-weight: 700;
   text-align: center;
 }
 
-.register-box {
+.create-form {
   display: grid;
   gap: 30px;
 }
-.text-box {
+.create-input {
   padding: 20px;
   font-family: Inter;
   font-size: 18px;
   font-weight: 300;
+  /* border: 1px solid blue; */
 }
 
-.btn {
-  display: grid;
-  gap: 20px;
-}
-.register-btn {
-  padding: 10px 40px;
+.create-btn {
+  padding: 15px ;
   font-size: 18px;
   font-weight: 500;
-  background-color: #3d3d3d;
+  background-color: rgba(0, 43, 161, 0.747);
   color: #fff;
+  cursor: pointer;
+  border: 1px solid rgba(0, 43, 161, 0.747);
+}
+.create-btn:hover{
+  background-color: rgb(58, 100, 216);
 }
 
 
+/* ============Updating Admin======== */
+.updateAdmin{
+  display: grid;
+  gap: 40px;
+  width: 85%;
+  padding:50px ;
+  border: 1px solid blue;
+  justify-self: center;
+  color: #111;
+  margin-top: 40px;
+}
+.updateAdmin-header{
+  font-size: 48px;
+  font-weight: 700;
+  text-align: center;
+}
+.updateAdmin-form{
+  display: grid;
+  gap: 30px;
+}
+.updateAdmin-input{
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 300;
+}
+.updateAdmin-btn{
+  /* display: block; */
+  padding: 15px ;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: rgba(0, 43, 161, 0.747);
+  color: #fff;
+  cursor: pointer;
+  border: 1px solid rgba(0, 43, 161, 0.747);
+}
+.updateAdmin-btn:hover{
+  background-color: rgb(58, 100, 216);
+}
+/* ========Upadate======= */
+.update-table{
+  border: 1px solid black;
+  width: 100%;
+  
+}
   /* =======Dashboard========= */
   .dashboard{
     display: flex;
+    color: #111;
     /* border: 1px solid black; */
     /* max-width: 100%;
     max-height: 100%; */
@@ -162,12 +207,6 @@
   .dashboard-list.active {
     display: block;
   }
-  .dashboard-content{
-    border: 2px solid yellowgreen;
-    margin-left: 250px;
-    padding: 20px;
-    flex-grow: 1;
-  }
 
   .dashboard-item{
     display: flex;
@@ -193,6 +232,14 @@
     color: rgb(58, 100, 216);
   }
 
+  .dashboard-content{
+    /* border: 2px solid yellowgreen; */
+    margin-left: 250px;
+    padding: 20px;
+    width: 100%;
+    /* flex-grow: 1; */
+  }
+
 
   /* =====Media Query=====
   @media screen and (max-width:800px) {
@@ -206,9 +253,33 @@
     }
   } */
 
-
-
-
+  .profileTable{
+    display: grid;
+    gap: 20px;
+    border: 1px solid black;
+    width: 100%;
+  }
+.profileTable-header{
+  justify-self: center;
+  font-size: 34px;
+}
+.profileTable-head{
+  border: 2px solid blue;
+  gap: 20px;
+  margin: 20px;
+  padding: 20px;
+}
+ 
+  .profileTable-data{
+    border: 1px solid black;
+    cursor: pointer;
+    /* margin: 20px; */
+  }
+  .profileTable-title{
+    border: 2px solid blue;
+    /* display: flex; */
+    /* gap: 30px; */
+  }
 
 
 
