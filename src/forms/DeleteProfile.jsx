@@ -5,12 +5,21 @@ const DeleteProfile = (profileId) => {
   const { token } = useAuthContext();
   const [profiles, setProfiles] = useState([]);
 
-  useEffect(() => {
-    fetch("https://artisan-api.up.railway.app/api/profiles/")
-      .then((res) => res.json())
-      .then((data) => setProfiles(data.data.profiles))
-      .catch((err) => console.error("Error fetching profiles:", err));
-  }, []);
+   useEffect(() => {
+      fetchProfiles();
+    }, []);
+  
+    const fetchProfiles = async () => {
+      try {
+        const res = await fetch(
+          "https://artisan-api.up.railway.app/api/profiles/"
+        );
+        const data = await res.json();
+        setProfiles(data.data.profiles);
+      } catch (err) {
+        console.error("Error fetching profiles:", err);
+      }
+    };
 
   const handleDeleteConfirmation = (profileId) => {
     const isConfirmed = window.confirm("Are you sure you want to delete this profile?");
@@ -38,6 +47,8 @@ const DeleteProfile = (profileId) => {
       }
   
       alert("Profile deleted successfully");
+      fetchProfiles();
+      
     } catch (error) {
       console.error("Error deleting profile!", error);
       alert("Error deleting profile");
