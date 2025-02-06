@@ -16,7 +16,7 @@ const CreateAdmin = function () {
       setIsLoading(true);
 
       // All input must be filled
-      if (!name || !email || !password || !role) {
+      if (!name || !email || !password ) {
         alert("Please fill out all fields.");
         return;
       }
@@ -39,6 +39,7 @@ const CreateAdmin = function () {
       setEmail("");
       setPassword("");
       setRole("");
+
     } catch (err) {
       console.error("Error:", err.message);
       alert("An error occurred. Please try again.");
@@ -78,7 +79,7 @@ const CreateAdmin = function () {
         <input
           type="text"
           className="create-input"
-          placeholder="Role*"
+          placeholder="Role"
           value={role}
           onChange={(e) => setRole(e.target.value)}
           required

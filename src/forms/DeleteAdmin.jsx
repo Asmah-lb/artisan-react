@@ -5,11 +5,11 @@ import { useNavigate } from "react-router-dom";
 function DeleteAdmin() {
 
   const navigate = useNavigate(); 
-  const { admin, token } = useAuthContext();
+  const { admin, token, logoutAdmin} = useAuthContext();
   const [loading, setLoading] = useState(false);
 
   if (!admin || !token) {
-    alert("You are not authorized or logged in.");
+    alert("You are not logged in.");
     return null; 
   }
 
@@ -43,6 +43,8 @@ function DeleteAdmin() {
       if (!res.ok) {
         throw new Error(`Failed to delete admin. Status: ${res.status}`);
       }
+
+      await logoutAdmin();
 
       alert("Admin Deleted");
       navigate("/login"); 

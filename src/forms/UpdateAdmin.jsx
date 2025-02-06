@@ -21,7 +21,7 @@ function UpdateAdmin() {
       alert("You need to login!")
       return;
     }
-//Getting Admin id from authContext==
+
     const adminId = admin._id;  
 
     try {

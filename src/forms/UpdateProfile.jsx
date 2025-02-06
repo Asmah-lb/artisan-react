@@ -34,7 +34,7 @@ const UpdateProfile = () => {
       .catch((err) => console.error("Error fetching profile:", err));
   };
 
-  // Handle form changes
+  
   const handleFormChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -62,6 +62,7 @@ const UpdateProfile = () => {
   
       //clearing form
       setFormData("");
+
     }catch(err){
       console.log(err.message);
       alert('Try again!!, an error occured!');
