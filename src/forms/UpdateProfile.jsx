@@ -1,10 +1,9 @@
-
 import React, { useState, useEffect } from "react";
 import { useAuthContext } from "../context/AuthContext";
 
 const UpdateProfile = () => {
-   const [isLoading, setIsLoading] = useState(false);
-  const {token} = useAuthContext()
+  const [isLoading, setIsLoading] = useState(false);
+  const { token } = useAuthContext();
   const [profiles, setProfiles] = useState([]);
   const [selectedProfile, setSelectedProfile] = useState(null);
   const [formData, setFormData] = useState({
@@ -14,11 +13,20 @@ const UpdateProfile = () => {
   });
 
   useEffect(() => {
-    fetch("https://artisan-api.up.railway.app/api/profiles/") 
-      .then((res) => res.json())
-      .then((data) => setProfiles(data.data.profiles))
-      .catch((err) => console.error("Error fetching profiles:", err));
+    fetchProfiles();
   }, []);
+
+  const fetchProfiles = async () => {
+    try {
+      const res = await fetch(
+        "https://artisan-api.up.railway.app/api/profiles/"
+      );
+      const data = await res.json();
+      setProfiles(data.data.profiles);
+    } catch (err) {
+      console.error("Error fetching profiles:", err);
+    }
+  };
 
   const handleSelectProfile = (profileId) => {
     fetch(`https://artisan-api.up.railway.app/api/profiles/${profileId}`)
@@ -34,41 +42,49 @@ const UpdateProfile = () => {
       .catch((err) => console.error("Error fetching profile:", err));
   };
 
-  
   const handleFormChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle form submission (update profile)
   const handleUpdateProfile = async (e) => {
     e.preventDefault();
-    setIsLoading(true)
+    setIsLoading(true);
     if (!selectedProfile) return;
-    if (!token) {
-      console.log("You are not authourised")
-      alert("You are not authourised!")
+    if (!token ) {
+      console.log("You are not authourised");
+      alert("You are not authourised!");
       return;
     }
-    try{
-      const res = await fetch(`https://artisan-api.up.railway.app/api/profiles/${selectedProfile}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`, },
-        body: JSON.stringify(formData),
-      })
+    try {
+      const res = await fetch(
+        `https://artisan-api.up.railway.app/api/profiles/${selectedProfile}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(formData),
+        }
+      );
       const data = await res.json();
       console.log(res, data);
-      alert("Updated Successfully!")
-  
-      //clearing form
-      setFormData("");
+      alert("Updated Successfully!");
 
-    }catch(err){
+      fetchProfiles();
+
+      //clearing form//
+      setFormData({
+        name: "",
+        email: "",
+        job: "",
+      });
+
+    } catch (err) {
       console.log(err.message);
-      alert('Try again!!, an error occured!');
-    }
-    finally{
-      setIsLoading(false)
+      alert("Try again!!, an error occured!");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -80,7 +96,7 @@ const UpdateProfile = () => {
       <table border="1" width="100%">
         <thead>
           <tr>
-          <th>ID</th>
+            <th>ID</th>
             <th>Name</th>
             <th>Email</th>
             <th>Job</th>
@@ -95,7 +111,9 @@ const UpdateProfile = () => {
               <td>{profile.email}</td>
               <td>{profile.job}</td>
               <td>
-                <button onClick={() => handleSelectProfile(profile._id)}>Update</button>
+                <button onClick={() => handleSelectProfile(profile._id)}>
+                  Update
+                </button>
               </td>
             </tr>
           ))}
@@ -104,12 +122,35 @@ const UpdateProfile = () => {
 
       {/* Update Form */}
       {selectedProfile && (
-        <form  style={{ marginTop: "20px" }}>
+        <form style={{ marginTop: "20px" }}>
           <h3>Update Profile</h3>
-          <input type="text" placeholder="name" name="name" value={formData.name} onChange={handleFormChange} required />
-          <input type="email" placeholder="email" name="email" value={formData.email} onChange={handleFormChange} required />
-          <input type="text" placeholder="job" name="job" value={formData.job} onChange={handleFormChange} required />
-          <button onClick={handleUpdateProfile} type="submit">{isLoading? "Loading..." : "Update Profile"}</button>
+          <input
+            type="text"
+            placeholder="name"
+            name="name"
+            value={formData.name}
+            onChange={handleFormChange}
+            required
+          />
+          <input
+            type="email"
+            placeholder="email"
+            name="email"
+            value={formData.email}
+            onChange={handleFormChange}
+            required
+          />
+          <input
+            type="text"
+            placeholder="job"
+            name="job"
+            value={formData.job}
+            onChange={handleFormChange}
+            required
+          />
+          <button onClick={handleUpdateProfile} type="submit">
+            {isLoading ? "Loading..." : "Update Profile"}
+          </button>
         </form>
       )}
     </div>
